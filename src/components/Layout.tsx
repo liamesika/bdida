@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import {
   LayoutDashboard,
   BookOpen,
@@ -14,7 +15,6 @@ import {
   Bug,
   Menu,
   X,
-  Brain,
   Calendar,
   Layers,
 } from 'lucide-react';
@@ -109,8 +109,7 @@ export default function Layout({ children }: LayoutProps) {
             {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           <div className="flex items-center gap-2">
-            <Brain className="w-6 h-6 text-indigo-600" />
-            <span className="font-bold text-lg text-gray-900">BDIDA</span>
+            <Image src="/logo.png" alt="L.M Logo" width={100} height={40} className="h-8 w-auto" />
           </div>
           <div className="w-10" />
         </div>
@@ -136,14 +135,8 @@ export default function Layout({ children }: LayoutProps) {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="p-4 border-b border-gray-200">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="font-bold text-lg text-gray-900">BDIDA</h1>
-                <p className="text-xs text-gray-500">מתמטיקה בדידה</p>
-              </div>
+            <div className="flex items-center justify-center">
+              <Image src="/logo.png" alt="L.M Logo" width={150} height={60} className="h-12 w-auto" />
             </div>
           </div>
 
