@@ -95,6 +95,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [logoPopupOpen, setLogoPopupOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -109,7 +110,9 @@ export default function Layout({ children }: LayoutProps) {
             {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="L.M Logo" width={100} height={40} className="h-8 w-auto" />
+            <button onClick={() => setLogoPopupOpen(true)}>
+              <Image src="/logo.png" alt="L.M Logo" width={100} height={40} className="h-8 w-auto cursor-pointer" />
+            </button>
           </div>
           <div className="w-10" />
         </div>
@@ -136,7 +139,9 @@ export default function Layout({ children }: LayoutProps) {
           {/* Logo */}
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-center">
-              <Image src="/logo.png" alt="L.M Logo" width={150} height={60} className="h-12 w-auto" />
+              <button onClick={() => setLogoPopupOpen(true)}>
+                <Image src="/logo.png" alt="L.M Logo" width={150} height={60} className="h-12 w-auto cursor-pointer" />
+              </button>
             </div>
           </div>
 
@@ -178,11 +183,42 @@ export default function Layout({ children }: LayoutProps) {
       </aside>
 
       {/* Main content */}
-      <main className="lg:mr-64 pt-16 lg:pt-0 min-h-screen">
-        <div className="p-4 md:p-6 lg:p-8">
+      <main className="lg:mr-64 pt-16 lg:pt-0 min-h-screen flex flex-col">
+        <div className="p-4 md:p-6 lg:p-8 flex-1">
           {children}
         </div>
+
+        {/* Footer */}
+        <footer className="p-4 border-t border-gray-200 bg-white">
+          <div className="text-center text-sm text-gray-500">
+            Built by <span className="font-medium text-gray-700">Lia Mesika</span>. All rights reserved.
+          </div>
+        </footer>
       </main>
+
+      {/* Logo Popup */}
+      {logoPopupOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          onClick={() => setLogoPopupOpen(false)}
+        >
+          <div className="relative">
+            <button
+              onClick={() => setLogoPopupOpen(false)}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <Image
+              src="/logo.png"
+              alt="L.M Logo"
+              width={400}
+              height={200}
+              className="max-w-[90vw] max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
