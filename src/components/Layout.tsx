@@ -18,6 +18,7 @@ import {
   Calendar,
   Layers,
   GitBranch,
+  Target,
 } from 'lucide-react';
 
 interface NavItem {
@@ -87,6 +88,12 @@ const navItems: NavItem[] = [
     label: 'Relations',
     labelHe: 'יחסים (12+13)',
     icon: <GitBranch className="w-5 h-5" />,
+  },
+  {
+    href: '/properties',
+    label: 'Properties',
+    labelHe: 'תכונות יחסים',
+    icon: <Target className="w-5 h-5" />,
   },
   {
     href: '/debug',
