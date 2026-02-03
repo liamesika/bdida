@@ -110,6 +110,12 @@ const navItems: NavItem[] = [
     icon: <FileCheck className="w-5 h-5" />,
   },
   {
+    href: '/exam-2024b',
+    label: 'Exam 2024B',
+    labelHe: 'מבחן 2024 מועד ב',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
     href: '/debug',
     label: 'Debug',
     labelHe: 'דיבאג',
