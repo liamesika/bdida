@@ -21,6 +21,7 @@ import {
   Target,
   ClipboardList,
   FileCheck,
+  Star,
 } from 'lucide-react';
 
 interface NavItem {
@@ -80,6 +81,12 @@ const navItems: NavItem[] = [
     icon: <FileSearch className="w-5 h-5" />,
   },
   {
+    href: '/exam-review',
+    label: 'Exam Review',
+    labelHe: 'חזרה לפי נושאים',
+    icon: <Star className="w-5 h-5" />,
+  },
+  {
     href: '/roadmap',
     label: 'Study Roadmap',
     labelHe: 'מפת לימוד',
@@ -113,6 +120,18 @@ const navItems: NavItem[] = [
     href: '/exam-2024b',
     label: 'Exam 2024B',
     labelHe: 'מבחן 2024 מועד ב',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam-2025b',
+    label: 'Exam 2025B',
+    labelHe: 'מבחן 2025 מועד ב',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam-2022b',
+    label: 'Exam 2022B',
+    labelHe: 'מבחן 2022 מועד ב',
     icon: <FileCheck className="w-5 h-5" />,
   },
   {
