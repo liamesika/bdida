@@ -20,6 +20,7 @@ import {
   GitBranch,
   Target,
   ClipboardList,
+  FileCheck,
 } from 'lucide-react';
 
 interface NavItem {
@@ -101,6 +102,12 @@ const navItems: NavItem[] = [
     label: 'Exam Analysis',
     labelHe: 'ניתוח שאלות מבחן',
     icon: <ClipboardList className="w-5 h-5" />,
+  },
+  {
+    href: '/exam-2023b',
+    label: 'Exam 2023B',
+    labelHe: 'מבחן 2023 מועד ב',
+    icon: <FileCheck className="w-5 h-5" />,
   },
   {
     href: '/debug',
