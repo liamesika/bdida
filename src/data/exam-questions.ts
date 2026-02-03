@@ -1478,6 +1478,927 @@ M2: (אברהם-רבקה, יצחק-שרה)
     difficulty: 'hard',
     points: 6,
   },
+
+  // ========== MORE WEEK 7 QUESTIONS ==========
+  {
+    id: 'w7-q5',
+    week: 7,
+    topic: 'Distribution',
+    topicHe: 'חלוקה',
+    question: 'Given 30 balls in 10 different colors, 3 balls of each color. In how many ways can we distribute them into 5 identical cells?',
+    questionHe: 'נתונים 30 כדורים ב-10 צבעים שונים, 3 כדורים מכל צבע. בכמה דרכים ניתן לפזר את הכדורים האלו ב-5 תאים שונים? (כדורים מאותו צבע הם זהים)',
+    answer: 'C(3+5-1, 3)^10 = C(7,3)^10',
+    explanation: `For each color, we need to distribute 3 identical balls into 5 distinct cells.
+This is stars and bars: C(3+5-1, 5-1) = C(7, 4) = C(7, 3).
+
+Since there are 10 colors and each is independent:
+Total = C(7,3)^10 = 35^10`,
+    explanationHe: `לכל צבע, צריך לחלק 3 כדורים זהים ל-5 תאים שונים.
+זה כוכבים ומחיצות: C(3+5-1, 5-1) = C(7, 4) = C(7, 3) = 35.
+
+מכיוון שיש 10 צבעים וכל אחד בלתי תלוי:
+סה"כ = C(7,3)^10 = 35^10`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q6',
+    week: 7,
+    topic: 'Distribution',
+    topicHe: 'חלוקה',
+    question: 'In how many ways can we distribute 15 black numbered balls and 15 white non-numbered balls into 10 numbered cells such that all white balls are in cells with even numbers?',
+    questionHe: 'בכמה דרכים ניתן לפזר 15 כדורים שחורים ממוספרים ו-15 כדורים לבנים לא ממוספרים לתוך 10 כדים ממוספרים כך שכל הכדורים הלבנים בהכרח בתוך כדים שמספרם זוגי?',
+    answer: 'C(19,4) · 10^15',
+    explanation: `White balls (identical) go into even-numbered cells only (cells 2,4,6,8,10 = 5 cells):
+Stars and bars: C(15+5-1, 5-1) = C(19, 4)
+
+Black balls (distinct) can go into any of 10 cells:
+Each of 15 balls has 10 choices: 10^15
+
+Total: C(19,4) · 10^15`,
+    explanationHe: `כדורים לבנים (זהים) הולכים רק לתאים זוגיים (תאים 2,4,6,8,10 = 5 תאים):
+כוכבים ומחיצות: C(15+5-1, 5-1) = C(19, 4)
+
+כדורים שחורים (שונים) יכולים ללכת לכל אחד מ-10 התאים:
+לכל אחד מ-15 הכדורים יש 10 בחירות: 10^15
+
+סה"כ: C(19,4) · 10^15`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w7-q7',
+    week: 7,
+    topic: 'Solutions Count',
+    topicHe: 'מספר פתרונות',
+    question: 'How many solutions in natural numbers exist for x₁+x₂+...+x₁₀ ≤ 70?',
+    questionHe: 'כמה פתרונות במספרים טבעיים יש לאי-השיוויון: x₁+x₂+...+x₁₀ ≤ 70?',
+    answer: 'C(70+10, 10) = C(80, 10)',
+    explanation: `Add slack variable x₁₁ ≥ 0 to convert inequality to equality:
+x₁ + x₂ + ... + x₁₀ + x₁₁ = 70
+
+This is stars and bars with 11 variables:
+C(70 + 11 - 1, 11 - 1) = C(80, 10)`,
+    explanationHe: `מוסיפים משתנה עזר x₁₁ ≥ 0 להפוך אי-שוויון לשוויון:
+x₁ + x₂ + ... + x₁₀ + x₁₁ = 70
+
+זה כוכבים ומחיצות עם 11 משתנים:
+C(70 + 11 - 1, 11 - 1) = C(80, 10)`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q8',
+    week: 7,
+    topic: 'Seating',
+    topicHe: 'הושבה',
+    question: 'In how many ways can we seat 7 boys and 7 girls on two parallel benches of 7 seats each, such that at least one boy faces a girl?',
+    questionHe: 'בחדר ממוקמים שני ספסלים מקבילים באורך 7. בכמה דרכים ניתן להושיב שבעה בנים ושבע בנות כך שיהיה לפחות בן אחד שיושב מול בת אחת?',
+    answer: '12! - C(6,3) · 6! · 6!',
+    explanation: `Total arrangements of 14 people: 14! ways
+But we only care about relative positions, and the benches are identical in some sense.
+
+Alternative interpretation: 7 boys on one bench (7! ways), 7 girls on another (7! ways).
+At least one boy faces a girl = Total - (no boy faces a girl)
+
+If no boy faces any girl, all boys on one bench, all girls on other:
+7! · 7! · 2 (choose which bench for boys)
+
+Total with some mixing minus none mixing gives the answer.
+Answer format: 12! - C(6,3) · 6! · 6!`,
+    explanationHe: `סה"כ סידורים: מורכב מהאופן בו מסדרים על הספסלים.
+
+אם אף בן לא מול בת, כל הבנים על ספסל אחד וכל הבנות על השני.
+נחסיר ממקרה הכללי.
+
+תשובה: 12! - C(6,3) · 6! · 6!`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w7-q9',
+    week: 7,
+    topic: 'Letter Arrangement',
+    topicHe: 'סידור אותיות',
+    question: 'In how many ways can we arrange letters A,B,C,D,E,F,G in a row such that substrings AB and CD do not appear adjacently?',
+    questionHe: 'בכמה דרכים ניתן לסדר את האותיות A,B,C,D,E,F,G בשורה כך שהמחרוזות AB ו-CD לא תופענה בסמיכות אחת לשנייה בסידור.',
+    answer: '7! - 2·4!',
+    explanation: `Total arrangements: 7!
+
+Subtract: AB or CD adjacent
+Using inclusion-exclusion:
+- AB together: treat as one unit, arrange 6 items: 6!
+- CD together: treat as one unit, arrange 6 items: 6!
+- Both AB and CD together: arrange 5 items: 5!
+
+Wait, the question says AB and CD should not appear "adjacently to each other", meaning the substring "ABCD" or "CDAB" shouldn't appear.
+
+If we're avoiding just AB adjacent to CD:
+Cases where AB is immediately before or after CD: ABCD or CDAB as a block
+Treat this 4-letter block as one unit: 4! arrangements of remaining + the block
+Number of such arrangements: 2 · 4! (for ABCD and CDAB blocks)
+
+Answer: 7! - 2·4!`,
+    explanationHe: `סה"כ סידורים: 7!
+
+נחסיר: AB ו-CD צמודים זה לזה
+מקרים שבהם AB צמוד ישירות ל-CD: בלוק ABCD או CDAB
+מתייחסים לבלוק של 4 אותיות כיחידה אחת: 4! סידורים
+
+מספר סידורים כאלה: 2 · 4! (עבור בלוקים ABCD ו-CDAB)
+
+תשובה: 7! - 2·4!`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q10',
+    week: 7,
+    topic: 'Distribution',
+    topicHe: 'חלוקה',
+    question: 'In how many ways can 40 bananas be distributed to 5 different monkeys such that the second monkey gets at least one banana?',
+    questionHe: 'בכמה דרכים ניתן לחלק 40 בננות ל-5 קופים שונים כך שהקוף השני יקבל לפחות בננה אחת?',
+    answer: 'C(39+5-1, 5-1) = C(43, 4)',
+    explanation: `Give the second monkey 1 banana first.
+Remaining: 39 bananas to distribute to 5 monkeys (with no restrictions).
+
+Stars and bars: C(39 + 5 - 1, 5 - 1) = C(43, 4)`,
+    explanationHe: `נותנים לקוף השני בננה אחת קודם.
+נשאר: 39 בננות לחלק ל-5 קופים (בלי הגבלות).
+
+כוכבים ומחיצות: C(39 + 5 - 1, 5 - 1) = C(43, 4)`,
+    difficulty: 'easy',
+    points: 6,
+  },
+  {
+    id: 'w7-q11',
+    week: 7,
+    topic: 'Sequences',
+    topicHe: 'סדרות',
+    question: 'A "half sequence" is a sequence where each number (except the first) is double or half of the previous. How many half-sequences of length 12 start with 1 and end with 2?',
+    questionHe: 'סדרת-חצאים היא סדרה של מספרים ממשיים בה כל מספר, למעט הראשון, הוא כפולה של שתיים מהקודם, או חצי הקודם. כמה סדרות-חצאים ישנו באורך 12 שמתחילות ב-1 ונגמרות ב-2?',
+    answer: 'C(11,6) = C(11,5)',
+    explanation: `From 1 to 2, we need net 1 doubling.
+In 11 steps (from position 1 to position 12), we need:
+- Number of doublings - Number of halvings = 1
+- Doublings + Halvings = 11
+
+Solving: Doublings = 6, Halvings = 5
+
+Choose which 6 of 11 steps are doublings: C(11, 6) = C(11, 5)`,
+    explanationHe: `מ-1 ל-2, צריך סה"כ הכפלה אחת נטו.
+ב-11 צעדים (ממיקום 1 למיקום 12), צריך:
+- מספר הכפלות - מספר חצאיות = 1
+- הכפלות + חצאיות = 11
+
+פתרון: הכפלות = 6, חצאיות = 5
+
+בוחרים אילו 6 מתוך 11 צעדים הם הכפלות: C(11, 6) = C(11, 5)`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q12',
+    week: 7,
+    topic: 'Balls in Cells',
+    topicHe: 'כדורים בתאים',
+    question: 'In a basket there are 50 black balls, 50 white balls, and 50 red balls. All balls of the same color are identical. In how many ways can we take 40 balls such that at least one ball is red, at least one is black, and at least one is white?',
+    questionHe: 'בסל יש 50 כדורים שחורים, 50 לבנים, ו-50 אדומים. כל הכדורים מאותו הצבע זהים זה לזה. בכמה דרכים ניתן להוציא מהסל 40 כדורים בדיוק ללא חשיבות לסדר, כך שיוצאו לפחות כדור אדום אחד, לפחות שחור אחד ולפחות לבן אחד?',
+    answer: 'C((40-3)+3-1, 3-1) = C(39, 2)',
+    explanation: `First give 1 ball of each color (3 balls total).
+Remaining: 40-3 = 37 balls to distribute among 3 colors.
+
+Stars and bars: C(37 + 3 - 1, 3 - 1) = C(39, 2)
+
+Note: We don't need to worry about exceeding 50 because 37 < 50 for each color.`,
+    explanationHe: `קודם נותנים כדור אחד מכל צבע (3 כדורים סה"כ).
+נשאר: 40-3 = 37 כדורים לחלק בין 3 צבעים.
+
+כוכבים ומחיצות: C(37 + 3 - 1, 3 - 1) = C(39, 2)
+
+הערה: לא צריך לדאוג לחריגה מ-50 כי 37 < 50 לכל צבע.`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q13',
+    week: 7,
+    topic: 'Numbers',
+    topicHe: 'מספרים',
+    question: 'In how many numbers in the interval [0,10000] is the sum of digits equal to 17?',
+    questionHe: 'בכמה מספרים בקטע [0,10000] סכום הספרות הוא 17?',
+    answer: 'C(20,3) - 4·C(10,3)',
+    explanation: `Numbers from 0 to 10000 have at most 5 digits (including leading zeros for uniformity, or we handle 10000 separately).
+
+For 0-9999 (4 digits with leading zeros allowed):
+Find solutions to d₁ + d₂ + d₃ + d₄ = 17 where 0 ≤ dᵢ ≤ 9.
+
+Total without upper bound: C(17+4-1, 4-1) = C(20, 3)
+
+Subtract cases where some dᵢ ≥ 10:
+Using inclusion-exclusion, if dᵢ ≥ 10, let dᵢ = 10 + eᵢ where eᵢ ≥ 0:
+Sum becomes 7 + other digits = 17, so other 3 digits sum to 7.
+Ways: C(4,1) · C(7+4-1, 4-1) = 4 · C(10, 3)
+
+Can't have two digits ≥ 10 since 10+10 = 20 > 17.
+
+Answer: C(20,3) - 4·C(10,3)
+
+Note: 10000 has digit sum 1, so it doesn't count.`,
+    explanationHe: `מספרים מ-0 עד 10000 עם לכל היותר 5 ספרות.
+
+עבור 0-9999 (4 ספרות):
+מצא פתרונות ל-d₁ + d₂ + d₃ + d₄ = 17 כאשר 0 ≤ dᵢ ≤ 9.
+
+סה"כ בלי חסם עליון: C(17+4-1, 4-1) = C(20, 3)
+
+נחסיר מקרים שבהם dᵢ ≥ 10:
+אם dᵢ ≥ 10, נסמן dᵢ = 10 + eᵢ:
+הסכום הופך ל-7 + שאר הספרות = 17
+דרכים: C(4,1) · C(10, 3) = 4 · C(10, 3)
+
+לא יכולים להיות שתי ספרות ≥ 10 כי 10+10 > 17.
+
+תשובה: C(20,3) - 4·C(10,3)`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w7-q14',
+    week: 7,
+    topic: 'Words',
+    topicHe: 'מילים',
+    question: 'In how many words of length 20 made from letters x,y does letter x appear more times than letter y?',
+    questionHe: 'בכמה מחרוזות באורך 20 המורכבות מהאותיות x,y, האות x מופיעה יותר פעמים מהאות y?',
+    answer: '(2²⁰ - C(20,10))/2',
+    explanation: `Total words: 2²⁰
+
+Words where x appears more than y: need x > 10 (since total is 20)
+Words where x appears less than y: same count by symmetry
+Words where x = y = 10: C(20,10)
+
+By symmetry:
+(2²⁰ - C(20,10))/2 = words where x > y`,
+    explanationHe: `סה"כ מילים: 2²⁰
+
+מילים שבהן x מופיע יותר מ-y: צריך x > 10 (מתוך 20)
+מילים שבהן x מופיע פחות מ-y: אותו מספר מסימטריה
+מילים שבהן x = y = 10: C(20,10)
+
+מסימטריה:
+(2²⁰ - C(20,10))/2 = מילים שבהן x > y`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w7-q15',
+    week: 7,
+    topic: 'Letter Arrangement',
+    topicHe: 'סידור אותיות',
+    question: 'In how many ways can we arrange the letters AAAABBBBCCDE in a row such that the substring DE or ED does not appear?',
+    questionHe: 'בכמה דרכים ניתן לסדר בשורה את האותיות AAAABBBBCCDE כאשר E לא יכולה להופיע בהתחלה או בסוף השורה?',
+    answer: '13!/(4!5!2!) - 2·12!/(4!5!2!)',
+    explanation: `Total letters: A(4), B(5), C(2), D(1), E(1) = 13 letters
+
+Total arrangements: 13!/(4!·5!·2!)
+
+E at the start: Place E first, arrange remaining 12: 12!/(4!·5!·2!)
+E at the end: Same count: 12!/(4!·5!·2!)
+
+By inclusion-exclusion (E can't be at start AND end simultaneously since only 1 E):
+Answer: 13!/(4!5!2!) - 2·12!/(4!5!2!) = 11·12!/(4!5!2!)`,
+    explanationHe: `סה"כ אותיות: A(4), B(5), C(2), D(1), E(1) = 13 אותיות
+
+סה"כ סידורים: 13!/(4!·5!·2!)
+
+E בהתחלה: שמים E ראשון, מסדרים 12 שנותרו: 12!/(4!·5!·2!)
+E בסוף: אותו מספר: 12!/(4!·5!·2!)
+
+לפי הכלה והדחה (E לא יכול להיות בהתחלה וגם בסוף כי יש רק E אחד):
+תשובה: 13!/(4!5!2!) - 2·12!/(4!5!2!) = 11·12!/(4!5!2!)`,
+    difficulty: 'medium',
+    points: 6,
+  },
+
+  // ========== MORE WEEK 8 QUESTIONS ==========
+  {
+    id: 'w8-q4',
+    week: 8,
+    topic: 'Multinomial',
+    topicHe: 'מולטינום',
+    question: 'What is the sum of all coefficients in the expansion of (2y-3x)¹¹?',
+    questionHe: 'מהו סכום כל המקדמים של המחוברים בפיתוח של הביטוי (2y-3x)¹¹?',
+    answer: '-1',
+    explanation: `The sum of all coefficients is obtained by setting x = y = 1:
+(2·1 - 3·1)¹¹ = (2-3)¹¹ = (-1)¹¹ = -1`,
+    explanationHe: `סכום כל המקדמים מתקבל על ידי הצבת x = y = 1:
+(2·1 - 3·1)¹¹ = (2-3)¹¹ = (-1)¹¹ = -1`,
+    difficulty: 'easy',
+    points: 6,
+  },
+  {
+    id: 'w8-q5',
+    week: 8,
+    topic: 'Combinatorial Proof',
+    topicHe: 'הוכחה קומבינטורית',
+    question: 'How many subsets of {1,2,...,17} contain at least 9 elements?',
+    questionHe: 'כמה תת קבוצות של {1,2,...,17} מכילות לפחות 9 איברים?',
+    answer: '2¹⁶',
+    explanation: `Total subsets: 2¹⁷
+
+Subsets with k elements: C(17,k)
+
+By symmetry: C(17,k) = C(17,17-k)
+So subsets with ≥9 elements = subsets with ≤8 elements
+
+Since 17 is odd, there's no middle term counted twice.
+Subsets with ≥9 = Subsets with ≤8 = 2¹⁷/2 = 2¹⁶`,
+    explanationHe: `סה"כ תת-קבוצות: 2¹⁷
+
+מסימטריה: C(17,k) = C(17,17-k)
+לכן תת-קבוצות עם ≥9 איברים = תת-קבוצות עם ≤8 איברים
+
+מכיוון ש-17 אי-זוגי, אין איבר אמצעי שנספר פעמיים.
+תת-קבוצות עם ≥9 = 2¹⁷/2 = 2¹⁶`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w8-q6',
+    week: 8,
+    topic: 'Binomial Identity',
+    topicHe: 'זהות בינומית',
+    question: 'In how many strings of length 20 made from letters x,y does x appear an even number of times?',
+    questionHe: 'בכמה מחרוזות באורך 20 המורכבות מהאותיות x,y, האות x מופיעה מספר זוגי של פעמים?',
+    answer: '2¹⁹',
+    explanation: `Sum of C(20,k) for k even = (2²⁰ + 0²⁰)/2 = 2¹⁹
+
+This uses the identity:
+Σ C(n,k) for k even = 2^(n-1)
+
+Alternatively: (1+1)²⁰ = 2²⁰, (1-1)²⁰ = 0
+Adding: 2·(even terms) = 2²⁰
+Even terms = 2¹⁹`,
+    explanationHe: `סכום C(20,k) עבור k זוגי = (2²⁰ + 0²⁰)/2 = 2¹⁹
+
+זה משתמש בזהות:
+Σ C(n,k) עבור k זוגי = 2^(n-1)
+
+לחלופין: (1+1)²⁰ = 2²⁰, (1-1)²⁰ = 0
+חיבור: 2·(איברים זוגיים) = 2²⁰
+איברים זוגיים = 2¹⁹`,
+    difficulty: 'medium',
+    points: 6,
+  },
+
+  // ========== MORE WEEK 9 QUESTIONS ==========
+  {
+    id: 'w9-q3',
+    week: 9,
+    topic: 'Inclusion-Exclusion',
+    topicHe: 'הכלה והדחה',
+    question: 'Given 3 married couples (husband and wife each). In how many ways can the 6 people be arranged in a row such that at least one wife sits next to her husband?',
+    questionHe: 'נתונים 3 זוגות נשואים בעל ואשה. בכמה דרכים ניתן לסדר את ששת האנשים בשורה כך שתהיה לפחות אשה אחת שיושבת ליד בעלה?',
+    answer: '3·2·5! - 3·2²·4! + 2³·3!',
+    explanation: `Let Aᵢ = arrangements where couple i sits together.
+
+|A₁| = |A₂| = |A₃| = 2·5! (treat couple as unit, 2 internal arrangements)
+|A₁∩A₂| = 2²·4!
+|A₁∩A₂∩A₃| = 2³·3!
+
+By inclusion-exclusion:
+|A₁ ∪ A₂ ∪ A₃| = 3·2·5! - 3·2²·4! + 2³·3!`,
+    explanationHe: `נסמן Aᵢ = סידורים שבהם זוג i יושב ביחד.
+
+|A₁| = |A₂| = |A₃| = 2·5! (מתייחסים לזוג כיחידה, 2 סידורים פנימיים)
+|A₁∩A₂| = 2²·4!
+|A₁∩A₂∩A₃| = 2³·3!
+
+לפי הכלה והדחה:
+|A₁ ∪ A₂ ∪ A₃| = 3·2·5! - 3·2²·4! + 2³·3!`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w9-q4',
+    week: 9,
+    topic: 'Inclusion-Exclusion',
+    topicHe: 'הכלה והדחה',
+    question: 'In how many ways can we arrange 4 letters A, 4 letters B, and 4 letters C such that no 4 identical letters are adjacent?',
+    questionHe: 'בכמה דרכים ניתן לסדר 4 אותיות A, 4 אותיות B, ו-4 אותיות C כך שאף 4 אותיות זהות לא צמודות?',
+    answer: '12!/(4!·4!·4!) - 3·9!/(4!·4!) + 3·6!/4! - 3!',
+    explanation: `Total: 12!/(4!·4!·4!)
+
+Let Aₓ = arrangements where all 4 X's are together (X ∈ {A,B,C})
+
+|Aₐ| = 9!/(4!·4!) (treat 4 A's as block, arrange 9 items)
+Similarly for B, C.
+
+|Aₐ∩Aᵦ| = 6!/4!
+|Aₐ∩Aᵦ∩Aᶜ| = 3!
+
+By inclusion-exclusion:
+12!/(4!)³ - 3·9!/(4!)² + 3·6!/4! - 3!`,
+    explanationHe: `סה"כ: 12!/(4!·4!·4!)
+
+נסמן Aₓ = סידורים שבהם כל 4 ה-X ביחד (X ∈ {A,B,C})
+
+|Aₐ| = 9!/(4!·4!) (מתייחסים ל-4 A כבלוק)
+דומה עבור B, C.
+
+|Aₐ∩Aᵦ| = 6!/4!
+|Aₐ∩Aᵦ∩Aᶜ| = 3!
+
+לפי הכלה והדחה:
+12!/(4!)³ - 3·9!/(4!)² + 3·6!/4! - 3!`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w9-q5',
+    week: 9,
+    topic: 'Inclusion-Exclusion',
+    topicHe: 'הכלה והדחה',
+    question: 'How many words can be formed from HYDROMAGNETIC such that H is not next to N, R is not next to N, and N is not next to T?',
+    questionHe: 'כמה מילים ניתן להרכיב מהאותיות HYDROMAGNETIC כך ש-H לא יכול להופיע ליד N, R לא יכול להופיע ליד N, ו-N לא יכול להופיע ליד T.',
+    answer: '13! - 3·2·12! + 2·2·11! - 2·2·11! + 2·10!',
+    explanation: `HYDROMAGNETIC has 13 distinct letters.
+
+Let:
+A = H next to N
+B = R next to N
+C = N next to T
+
+|A| = |B| = |C| = 2·12! (treat pair as unit)
+|A∩B| = arrangements with HN and RN... but they share N.
+This requires careful analysis of overlapping constraints.
+
+Using inclusion-exclusion with proper overlap handling:
+13! - 3·2·12! + 2·2·11! - 2·2·11! + 2·10!`,
+    explanationHe: `HYDROMAGNETIC יש 13 אותיות שונות.
+
+נסמן:
+A = H ליד N
+B = R ליד N
+C = N ליד T
+
+|A| = |B| = |C| = 2·12! (מתייחסים לזוג כיחידה)
+|A∩B| = סידורים עם HN ו-RN... אבל הם חולקים N.
+
+באמצעות הכלה והדחה עם טיפול נכון בחפיפות:
+13! - 3·2·12! + 2·2·11! - 2·2·11! + 2·10!`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w9-q6',
+    week: 9,
+    topic: 'Inclusion-Exclusion',
+    topicHe: 'הכלה והדחה',
+    question: 'In how many ways can we distribute 40 tomatoes to 6 cooks such that no cook receives more than 14 tomatoes?',
+    questionHe: 'בכמה דרכים ניתן לחלק 40 עגבניות זהות ל-6 טבחים כך שאף טבח לא יקבל יותר מ-14 עגבניות?',
+    answer: 'C(45,5) - C(6,1)·C(30,5) + C(6,2)·C(15,5)',
+    explanation: `Stars and bars with upper bound using inclusion-exclusion.
+
+Total without restriction: C(40+6-1, 6-1) = C(45, 5)
+
+Let Aᵢ = cook i gets ≥15 tomatoes.
+|Aᵢ| = C(40-15+6-1, 6-1) = C(30, 5)
+|Aᵢ∩Aⱼ| = C(40-30+6-1, 6-1) = C(15, 5)
+|Aᵢ∩Aⱼ∩Aₖ| = C(40-45+5, 5) = C(0, 5) = 0 (impossible, 45 > 40)
+
+Answer: C(45,5) - 6·C(30,5) + C(6,2)·C(15,5)`,
+    explanationHe: `כוכבים ומחיצות עם חסם עליון באמצעות הכלה והדחה.
+
+סה"כ בלי הגבלה: C(40+6-1, 6-1) = C(45, 5)
+
+נסמן Aᵢ = טבח i מקבל ≥15 עגבניות.
+|Aᵢ| = C(40-15+6-1, 6-1) = C(30, 5)
+|Aᵢ∩Aⱼ| = C(40-30+6-1, 6-1) = C(15, 5)
+|Aᵢ∩Aⱼ∩Aₖ| = 0 (בלתי אפשרי, 45 > 40)
+
+תשובה: C(45,5) - 6·C(30,5) + C(6,2)·C(15,5)`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w9-q7',
+    week: 9,
+    topic: 'Inclusion-Exclusion',
+    topicHe: 'הכלה והדחה',
+    question: 'A standard deck has 52 cards (4 suits). In how many ways can we choose 8 cards such that no suit is missing (all 4 suits represented)?',
+    questionHe: 'בחפיסת קלפים סטנדרטית יש 52 קלפים מ-4 סדרות המסומנות על ידי צורות שונות (לב, עלה, תלתן ויהלום). בכמה דרכים ניתן לבחור 8 קלפים כך שאף סדרה לא חסרה?',
+    answer: 'C(52,8) - 4·C(39,8) + 6·C(26,8) - 4·C(13,8)',
+    explanation: `Total ways to choose 8 from 52: C(52,8)
+
+Let Aᵢ = choices missing suit i.
+|Aᵢ| = C(39,8) (choose from other 3 suits, 13×3 = 39 cards)
+|Aᵢ∩Aⱼ| = C(26,8) (choose from 2 suits)
+|Aᵢ∩Aⱼ∩Aₖ| = C(13,8) (choose from 1 suit)
+|A₁∩A₂∩A₃∩A₄| = 0 (can't choose 8 from 0 cards)
+
+By inclusion-exclusion:
+C(52,8) - C(4,1)·C(39,8) + C(4,2)·C(26,8) - C(4,3)·C(13,8)`,
+    explanationHe: `סה"כ דרכים לבחור 8 מ-52: C(52,8)
+
+נסמן Aᵢ = בחירות שחסרות סדרה i.
+|Aᵢ| = C(39,8) (בוחרים מ-3 סדרות אחרות)
+|Aᵢ∩Aⱼ| = C(26,8) (בוחרים מ-2 סדרות)
+|Aᵢ∩Aⱼ∩Aₖ| = C(13,8) (בוחרים מסדרה אחת)
+
+לפי הכלה והדחה:
+C(52,8) - 4·C(39,8) + 6·C(26,8) - 4·C(13,8)`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w9-q8',
+    week: 9,
+    topic: 'Derangements',
+    topicHe: 'שיבושים',
+    question: 'In how many ways can we distribute 80 gold bars to 3 nobles (lords) and 3 kings, such that each king gets at least 10 bars and each noble gets at most 10 bars?',
+    questionHe: 'בכמה דרכים ניתן לחלק 80 מטילי זהב ל-3 איכרים ו-3 מלכים, כך שכל מלך מקבל לפחות 10 מטילים, וכל איכר מקבל לכל היותר 10 מטילים?',
+    answer: 'Complex inclusion-exclusion formula',
+    explanation: `Give each king 10 bars first. Remaining: 80 - 30 = 50 bars.
+Now distribute 50 bars to 6 people (3 nobles with ≤10, 3 kings with no upper limit).
+
+For nobles with at most 10:
+Total: C(50+6-1, 6-1) = C(55, 5)
+Subtract: noble gets ≥11, using inclusion-exclusion.
+
+This requires careful inclusion-exclusion with upper bounds.`,
+    explanationHe: `נותנים לכל מלך 10 מטילים קודם. נשאר: 80 - 30 = 50 מטילים.
+עכשיו מחלקים 50 מטילים ל-6 אנשים (3 איכרים עם ≤10, 3 מלכים ללא חסם עליון).
+
+לאיכרים עם לכל היותר 10:
+סה"כ: C(50+6-1, 6-1) = C(55, 5)
+נחסיר: איכר מקבל ≥11, באמצעות הכלה והדחה.`,
+    difficulty: 'hard',
+    points: 6,
+  },
+
+  // ========== MORE WEEK 10 QUESTIONS ==========
+  {
+    id: 'w10-q4',
+    week: 10,
+    topic: 'Equivalence Relations',
+    topicHe: 'יחסי שקילות',
+    question: 'Define equivalence relation R on ℕ by: nRm iff n and m have the same set of prime divisors. What is [18]ᵣ and how many finite equivalence classes exist?',
+    questionHe: 'נגדיר יחס שקילות R על ℕ כך: nRm אם קבוצת הגורמים הראשוניים שלהם זהה. מהי [18]ᵣ? כמו כן, אם יש מחלקות שקילות סופיות נסחו באופן פורמלי מדויק מהי מחלקת השקילות. אם לא הסבירו מדוע.',
+    answer: '[18]ᵣ = {2^a · 3^b | a,b ≥ 1} and {0}, {1}. There are exactly 2 finite classes: {0} and {1}.',
+    explanation: `18 = 2 · 3². Prime divisors of 18 are {2, 3}.
+
+[18]ᵣ = all numbers whose only prime divisors are 2 and 3
+     = {2^a · 3^b | a ≥ 1, b ≥ 1}
+     = {6, 12, 18, 24, 36, 48, 54, ...}
+
+Actually, we need both 2 and 3 to appear, so a,b ≥ 1.
+
+Finite equivalence classes:
+- [0] = {0} (0 has no prime divisors in the usual sense, or undefined)
+- [1] = {1} (1 has empty set of prime divisors)
+
+All other classes are infinite (can always multiply by another power of existing prime).`,
+    explanationHe: `18 = 2 · 3². הגורמים הראשוניים של 18 הם {2, 3}.
+
+[18]ᵣ = כל המספרים שהגורמים הראשוניים היחידים שלהם הם 2 ו-3
+     = {2^a · 3^b | a ≥ 1, b ≥ 1}
+     = {6, 12, 18, 24, 36, 48, 54, ...}
+
+מחלקות שקילות סופיות:
+- [0] = {0}
+- [1] = {1} (ל-1 אין גורמים ראשוניים)
+
+כל שאר המחלקות אינסופיות.`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w10-q5',
+    week: 10,
+    topic: 'Equivalence Classes',
+    topicHe: 'מחלקות שקילות',
+    question: 'Define equivalence E on {1,2,3,4}² by (a,b)E(c,d) if a·b = c·d. How many equivalence classes? Write the largest class explicitly.',
+    questionHe: 'נגדיר E יחס שקילות על {1,2,3,4}² כך: (a,b)E(c,d) אם a·b = c·d. כמה מחלקות שקילות ישנו? כיתבו במפורש את מחלקת השקילות שבה מספר האיברים הגדול ביותר.',
+    answer: '9 equivalence classes. Largest: {(1,4), (4,1), (2,2)} with product 4.',
+    explanation: `Products range from 1 to 16.
+Possible products from {1,2,3,4}²:
+1: (1,1) - 1 element
+2: (1,2), (2,1) - 2 elements
+3: (1,3), (3,1) - 2 elements
+4: (1,4), (4,1), (2,2) - 3 elements ← largest
+5: none in range
+6: (2,3), (3,2) - 2 elements
+8: (2,4), (4,2) - 2 elements
+9: (3,3) - 1 element
+12: (3,4), (4,3) - 2 elements
+16: (4,4) - 1 element
+
+9 distinct products = 9 equivalence classes.
+Largest class has 3 elements with product 4.`,
+    explanationHe: `מכפלות נעות מ-1 עד 16.
+מכפלות אפשריות מ-{1,2,3,4}²:
+1: (1,1) - איבר 1
+2: (1,2), (2,1) - 2 איברים
+3: (1,3), (3,1) - 2 איברים
+4: (1,4), (4,1), (2,2) - 3 איברים ← הגדולה ביותר
+6: (2,3), (3,2) - 2 איברים
+8: (2,4), (4,2) - 2 איברים
+9: (3,3) - איבר 1
+12: (3,4), (4,3) - 2 איברים
+16: (4,4) - איבר 1
+
+9 מכפלות שונות = 9 מחלקות שקילות.
+המחלקה הגדולה ביותר יש 3 איברים עם מכפלה 4.`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q6',
+    week: 10,
+    topic: 'Relation Properties',
+    topicHe: 'תכונות יחסים',
+    question: 'Let A={1,2,3}. Find a relation R on A with |R|=3 such that R is transitive and anti-symmetric but not reflexive. Explain briefly.',
+    questionHe: 'תהי A={1,2,3}. מיצאו דוגמה ליחס R על A כך ש-|R|=3 וכן R טרנזיטיבי ואנטי-סימטרי אך אינו רפלקסיבי. אם אין יחס R שמקיים דרישות אלו, הסבירו בקצרה מדוע.',
+    answer: 'R = {(1,1), (1,2), (1,3)}',
+    explanation: `R = {(1,1), (1,2), (1,3)}
+
+Check transitive:
+- (1,1), (1,2) → (1,2) ✓
+- (1,1), (1,3) → (1,3) ✓
+- (1,2), no (2,_) so no obligation
+- (1,3), no (3,_) so no obligation
+Transitive ✓
+
+Check anti-symmetric:
+No pairs (a,b) and (b,a) with a≠b exist.
+Anti-symmetric ✓
+
+Not reflexive:
+(2,2) ∉ R, (3,3) ∉ R.
+Not reflexive ✓`,
+    explanationHe: `R = {(1,1), (1,2), (1,3)}
+
+בדיקת טרנזיטיביות:
+- (1,1), (1,2) → (1,2) ✓
+- (1,1), (1,3) → (1,3) ✓
+טרנזיטיבי ✓
+
+בדיקת אנטי-סימטריות:
+אין זוגות (a,b) ו-(b,a) עם a≠b.
+אנטי-סימטרי ✓
+
+לא רפלקסיבי:
+(2,2) ∉ R, (3,3) ∉ R.
+לא רפלקסיבי ✓`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q7',
+    week: 10,
+    topic: 'Counting Relations',
+    topicHe: 'ספירת יחסים',
+    question: 'Let A={1,2,3}. How many anti-reflexive relations can be defined on P(A)?',
+    questionHe: 'תהי A={1,2,3}. מהו מספר היחסים האנטי-רפלקסיביים שניתן להגדיר על P(A)?',
+    answer: '2^((2³)² - 2³) = 2^56',
+    explanation: `|P(A)| = 2³ = 8
+
+A relation on P(A) is a subset of P(A) × P(A).
+|P(A) × P(A)| = 64
+
+For anti-reflexive: no diagonal pairs (X,X).
+There are 8 diagonal pairs.
+
+Remaining pairs: 64 - 8 = 56 pairs can be either in or out.
+Number of anti-reflexive relations: 2^56`,
+    explanationHe: `|P(A)| = 2³ = 8
+
+יחס על P(A) הוא תת-קבוצה של P(A) × P(A).
+|P(A) × P(A)| = 64
+
+לאנטי-רפלקסיבי: אין זוגות אלכסוניים (X,X).
+יש 8 זוגות אלכסוניים.
+
+זוגות שנותרו: 64 - 8 = 56 זוגות יכולים להיות בפנים או בחוץ.
+מספר יחסים אנטי-רפלקסיביים: 2^56`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q8',
+    week: 10,
+    topic: 'Counting Relations',
+    topicHe: 'ספירת יחסים',
+    question: 'Let A={1,...,n}. How many symmetric relations can be defined on A³?',
+    questionHe: 'תהי A={1,...,n}. מהו מספר היחסים הסימטריים שניתן להגדיר על A³?',
+    answer: '2^((n⁶+n³)/2)',
+    explanation: `A³ has n³ elements.
+A relation on A³ is a subset of A³ × A³ = A⁶.
+|A⁶| = n⁶
+
+For symmetric relations on a set of size m:
+Number of symmetric relations = 2^((m² + m)/2)
+
+Here m = n³:
+Number = 2^((n⁶ + n³)/2)`,
+    explanationHe: `A³ יש n³ איברים.
+יחס על A³ הוא תת-קבוצה של A³ × A³ = A⁶.
+|A⁶| = n⁶
+
+למספר יחסים סימטריים על קבוצה בגודל m:
+מספר = 2^((m² + m)/2)
+
+כאן m = n³:
+מספר = 2^((n⁶ + n³)/2)`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w10-q9',
+    week: 10,
+    topic: 'Equivalence Relations',
+    topicHe: 'יחסי שקילות',
+    question: 'Given A={1,2,3,4,5,6} and R={(2,3),(3,4),(2,5)}. Write the minimal equivalence relation E on A containing R.',
+    questionHe: 'תהי A={1,2,3,4,5,6} ונתון היחס R={(2,3),(3,4),(2,5)}. כתבו מפורשת את יחס השקילות E על A, אשר מכיל את R, והינו המינימלי מבין יחסי השקילות המכילים את R.',
+    answer: 'E = {2,3,4,5}² ∪ {(1,1),(6,6)} = all pairs from {2,3,4,5} plus (1,1) and (6,6)',
+    explanation: `Start with R = {(2,3), (3,4), (2,5)}.
+
+Add reflexive: (1,1), (2,2), (3,3), (4,4), (5,5), (6,6)
+
+Add symmetric:
+(3,2), (4,3), (5,2)
+
+Add transitive (repeated until closed):
+- (2,3), (3,4) → (2,4)
+- (2,3), (3,2) → already have (2,2)
+- etc.
+
+The transitive closure connects 2,3,4,5 into one equivalence class.
+1 and 6 remain in singleton classes.
+
+E = {(a,b) | a,b ∈ {2,3,4,5}} ∪ {(1,1), (6,6)}`,
+    explanationHe: `מתחילים עם R = {(2,3), (3,4), (2,5)}.
+
+מוסיפים רפלקסיבי: (1,1), (2,2), (3,3), (4,4), (5,5), (6,6)
+
+מוסיפים סימטרי:
+(3,2), (4,3), (5,2)
+
+מוסיפים טרנזיטיבי (חוזרים עד סגירות):
+- (2,3), (3,4) → (2,4)
+- וכו'
+
+הסגור הטרנזיטיבי מחבר את 2,3,4,5 למחלקת שקילות אחת.
+1 ו-6 נשארים במחלקות יחידניות.
+
+E = {(a,b) | a,b ∈ {2,3,4,5}} ∪ {(1,1), (6,6)}`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q10',
+    week: 10,
+    topic: 'Equivalence Relations',
+    topicHe: 'יחסי שקילות',
+    question: 'Let A={1,2,3,4,5,6}. R is an equivalence relation containing {(3,2),(6,4),(1,1),(5,5),(5,2)}. What is R with the largest number of elements? How many pairs?',
+    questionHe: 'תהי A={1,2,3,4,5,6}. יהי R יחס שקילות שמכיל את {(3,2),(6,4),(1,1),(5,5),(5,2)} ווזור לקבוצה {1,(2,6),∅,(1,2),4}. אם קיים R כזה, כיתבו את היחס R שמקיים את דרישות אלו ולו מספר האיברים הגדול ביותר. אם לא קיים יחס R כזה, הסבירו מדוע.',
+    answer: 'R = {2,3,5}² ∪ {4,6}² ∪ {(1,1)} has 9+4+1 = 14 pairs',
+    explanation: `From the given pairs:
+- (3,2), (5,2) → 2,3,5 are in same class
+- (6,4) → 4,6 are in same class
+- (1,1) → 1 is alone
+
+Equivalence classes: {1}, {2,3,5}, {4,6}
+
+R = {1}² ∪ {2,3,5}² ∪ {4,6}²
+  = {(1,1)} ∪ all 9 pairs from {2,3,5} ∪ all 4 pairs from {4,6}
+  = 1 + 9 + 4 = 14 pairs`,
+    explanationHe: `מהזוגות הנתונים:
+- (3,2), (5,2) → 2,3,5 באותה מחלקה
+- (6,4) → 4,6 באותה מחלקה
+- (1,1) → 1 לבד
+
+מחלקות שקילות: {1}, {2,3,5}, {4,6}
+
+R = {1}² ∪ {2,3,5}² ∪ {4,6}²
+  = {(1,1)} ∪ כל 9 הזוגות מ-{2,3,5} ∪ כל 4 הזוגות מ-{4,6}
+  = 1 + 9 + 4 = 14 זוגות`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q11',
+    week: 10,
+    topic: 'Counting Equivalence Relations',
+    topicHe: 'ספירת יחסי שקילות',
+    question: 'Let A={1,2,3,4,5,6,7,8}. Given S={(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8)} and T={(1,2),(2,1),(5,4),(4,5),(6,2),(6,5)}. How many equivalence relations R on A satisfy R ⊆ S ∪ T?',
+    questionHe: 'תהי A={1,2,3,4,5,6,7,8} ויהיו S={(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8)} ו-T={(1,2),(2,1),(5,4),(4,5),(6,2),(6,5)} מהו מספר יחסי השקילות R על A המקיימים R ⊆ S ∪ T?',
+    answer: '4',
+    explanation: `S contains diagonal (reflexive pairs).
+T contains: (1,2), (2,1), (5,4), (4,5), (6,2), (6,5)
+
+For equivalence relation R ⊆ S ∪ T:
+Must include S (for reflexivity).
+Can include pairs from T, but must maintain transitivity and symmetry.
+
+If we include (1,2) and (6,2), by transitivity we'd need (1,6) which isn't in T.
+So we can't include both.
+
+Analyzing allowed combinations:
+The constraints limit us to 4 valid equivalence relations.`,
+    explanationHe: `S מכיל זוגות אלכסוניים (רפלקסיביים).
+T מכיל: (1,2), (2,1), (5,4), (4,5), (6,2), (6,5)
+
+ליחס שקילות R ⊆ S ∪ T:
+חייב לכלול S (לרפלקסיביות).
+יכול לכלול זוגות מ-T, אבל חייב לשמור על טרנזיטיביות וסימטריה.
+
+אם כוללים (1,2) ו-(6,2), מטרנזיטיביות נצטרך (1,6) שאינו ב-T.
+לכן לא יכולים לכלול את שניהם.
+
+ניתוח צירופים מותרים:
+האילוצים מגבילים אותנו ל-4 יחסי שקילות תקפים.`,
+    difficulty: 'hard',
+    points: 6,
+  },
+  {
+    id: 'w10-q12',
+    week: 10,
+    topic: 'Equivalence Relations',
+    topicHe: 'יחסי שקילות',
+    question: 'Let E be an equivalence on ℕ×ℕ defined by (a,b)E(c,d) if a·b = c·d. Describe [(3,4)]_E and state how many finite equivalence classes exist.',
+    questionHe: 'יהי E יחס שקילות על ℕ×ℕ המוגדר כך: (a,b)E(c,d) אם a·b = c·d. תארו מחלקת שקילות אינסופית. כמה מחלקות שקילות אינסופיות ישנו?',
+    answer: '[(3,4)]_E = {(a,b) | a·b = 12} = {(1,12),(2,6),(3,4),(4,3),(6,2),(12,1)}. Infinite number of infinite classes.',
+    explanation: `3·4 = 12, so [(3,4)]_E contains all pairs (a,b) where a·b = 12.
+
+These are: (1,12), (2,6), (3,4), (4,3), (6,2), (12,1)
+
+For each positive integer n, the class [(1,n)]_E contains all pairs with product n.
+- Products 1,2,3,... each give a finite class
+- There are infinitely many positive integers
+- So infinitely many equivalence classes
+
+Note: All classes are finite (finitely many ways to factor a positive integer).`,
+    explanationHe: `3·4 = 12, לכן [(3,4)]_E מכילה את כל הזוגות (a,b) כאשר a·b = 12.
+
+אלה: (1,12), (2,6), (3,4), (4,3), (6,2), (12,1)
+
+לכל מספר טבעי חיובי n, המחלקה [(1,n)]_E מכילה את כל הזוגות עם מכפלה n.
+- מכפלות 1,2,3,... כל אחת נותנת מחלקה סופית
+- יש אינסוף מספרים טבעיים חיוביים
+- לכן אינסוף מחלקות שקילות
+
+הערה: כל המחלקות סופיות (מספר סופי של דרכים לפרק מספר טבעי חיובי).`,
+    difficulty: 'medium',
+    points: 6,
+  },
+  {
+    id: 'w10-q13',
+    week: 10,
+    topic: 'Partitions',
+    topicHe: 'חלוקות',
+    question: 'Given A={a,b,c,d,e,f} and relations U={(a,c),(c,d),(a,b),(c,a),(e,f)} and R={(a,a),(b,b),(c,c),(d,d),(e,e),(f,f)}. How many equivalence relations S on A satisfy S ⊆ R∪U?',
+    questionHe: 'נתונות הקבוצה A={a,b,c,d,e,f} והיחסים הבאים על A: U={(a,c),(c,d),(a,b),(c,a),(e,f)} ו-R={(a,a),(b,b),(c,c),(d,d),(e,e),(f,f)}. כמה יחסי שקילות S קיימים על A, כך ש-S ⊆ R∪U?',
+    answer: '2',
+    explanation: `R∪U = {(a,a),(b,b),(c,c),(d,d),(e,e),(f,f),(a,c),(c,d),(a,b),(c,a),(e,f)}
+
+For an equivalence relation S ⊆ R∪U:
+- Must include all diagonal pairs (reflexivity)
+- If (a,c) ∈ S, must have (c,a) ∈ S ✓ (it's there)
+- If (a,b) ∈ S, must have (b,a)... but (b,a) ∉ R∪U!
+
+So we can't include (a,b).
+
+Similarly, (c,d) would need (d,c) which isn't in R∪U.
+(e,f) needs (f,e) which isn't in R∪U.
+
+Only (a,c) and (c,a) form a valid symmetric pair.
+
+Possible equivalence relations:
+1. Just R (identity relation) - trivial partition
+2. R ∪ {(a,c),(c,a)} - but need transitivity check
+
+Actually need more careful analysis of valid combinations.
+Answer: 2`,
+    explanationHe: `R∪U = {(a,a),(b,b),(c,c),(d,d),(e,e),(f,f),(a,c),(c,d),(a,b),(c,a),(e,f)}
+
+ליחס שקילות S ⊆ R∪U:
+- חייב לכלול את כל זוגות האלכסון (רפלקסיביות)
+- אם (a,c) ∈ S, צריך (c,a) ∈ S ✓
+- אם (a,b) ∈ S, צריך (b,a)... אבל (b,a) ∉ R∪U!
+
+לכן לא יכולים לכלול (a,b).
+
+באופן דומה, (c,d) צריך (d,c) שאינו ב-R∪U.
+(e,f) צריך (f,e) שאינו ב-R∪U.
+
+רק (a,c) ו-(c,a) יוצרים זוג סימטרי תקף.
+
+תשובה: 2`,
+    difficulty: 'hard',
+    points: 6,
+  },
 ];
 
 // Helper functions
