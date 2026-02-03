@@ -19,6 +19,7 @@ import {
   Layers,
   GitBranch,
   Target,
+  ClipboardList,
 } from 'lucide-react';
 
 interface NavItem {
@@ -94,6 +95,12 @@ const navItems: NavItem[] = [
     label: 'Properties',
     labelHe: 'תכונות יחסים',
     icon: <Target className="w-5 h-5" />,
+  },
+  {
+    href: '/exam-analysis',
+    label: 'Exam Analysis',
+    labelHe: 'ניתוח שאלות מבחן',
+    icon: <ClipboardList className="w-5 h-5" />,
   },
   {
     href: '/debug',
